@@ -1,31 +1,233 @@
-*{
-  padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Base styles */
+* {
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  font-family: 'poppins', sans-serif; 
 }
-.home-component{
+
+:root {
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --bg-light: #f8fafc;
+  --border-color: #e2e8f0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+.auth-component {
+  min-height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  position: relative;
+  padding: 1rem;
+  background-color: white;
+  background-image: linear-gradient(to right, #8080800a 1px, transparent 1px),
+                    linear-gradient(to bottom, #8080800a 1px, transparent 1px);
+  background-size: 14px 24px;
+}
+
+.auth-component::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+  height: 310px;
+  width: 310px;
+  border-radius: 50%;
+  background-color: #e879f9;
+  opacity: 0.2;
+  filter: blur(100px);
+  z-index: -1;
+}
+
+.auth-component-in {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1100px;
+  width: 100%;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.auth-component-in-one {
+  position: relative;
+  background: #f8fafc;
+  padding: 2rem;
+  display: grid;
+  place-items: center;
+}
+
+.auth-component-in-one img {
+  object-fit: contain;
+  max-width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+
+.auth-component-in-two {
+  padding: 3rem 4rem;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f1f1f1;
-  width: 100%;
-}
-.home-component-in{
-  width: 100%;
-  display: flex; 
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  gap: 2rem;
 }
-.home-component-in h1{
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: black;
+.auth-component-in-two-heading {
+  text-align: center;
 }
-.home-component-in p{
+.auth-component-in-two-heading h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+.auth-component-in-two-heading p {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #334155;
+}
+.form-group input {
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  background: #f8fafc;
+}
+.form-group input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-group-button {
+  margin-top: 0.5rem;
+}
+
+.form-group-button button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
   font-size: 1rem;
-  font-weight: 400;
-  color: black;
+  cursor: pointer;
+  transition: background 0.2s ease;
 }
+
+.form-group-button button:hover {
+  background: #2563eb;
+}
+
+.form-group-forgotpassword {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.form-group-forgotpassword a {
+  color: #3b82f6;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.form-group-forgotpassword a:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.toggle-auth {
+  text-align: center;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.toggle-auth span {
+  color: #3b82f6;
+  cursor: pointer;
+  font-weight: 500;
+  margin-left: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.toggle-auth span:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .auth-component-in {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+
+  .auth-component-in-one {
+    display: none;
+  }
+
+  .auth-component-in-two {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-component-in-two {
+    padding: 1.5rem;
+  }
+
+  .auth-component-in-two-heading h1 {
+    font-size: 1.75rem;
+  }
+}
+
+.password-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-input-container input {
+  width: 100%;
+  padding-right: 40px; /* Make space for the icon */
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+}
+
+.password-toggle:hover {
+  color: #333;
+}
+
